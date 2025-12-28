@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+
+<body>
+   <div class="contact-container">
+    <form action="https://api.web3forms.com/submit" class="contact-left" method="post" onsubmit="return handleSubmit(event)">
+
+
+
+
+
+        <div class="contact-left-title">
+            <h2>leave your note</h2>
+            <hr>
+
+
+        </div>
+
+ <div class="rating">
+  <input type="radio" name="rating" id="star5" value="5">
+  <label for="star5">★</label>
+
+  <input type="radio" name="rating" id="star4" value="4">
+  <label for="star4">★</label>
+
+  <input type="radio" name="rating" id="star3" value="3">
+  <label for="star3">★</label>
+
+  <input type="radio" name="rating" id="star2" value="2">
+  <label for="star2">★</label>
+
+  <input type="radio" name="rating" id="star1" value="1">
+  <label for="star1">★</label>
+</div>
+
+         <input type="hidden" name="access_key" value="7ee81a52-810c-4233-a79f-4534b5dbc6dd">
+        <input type="text" name="name" placeholder="your name" class="contact-inputs" required>
+        <input type="email" name="email" placeholder="your email" class="contact-inputs" required>
+        <textarea name="message" placeholder="your message" class="contact-inputs"></textarea>
+        <button type="submit
+        " >submit <img src="assets/arrow_icon.png" alt=""></button>
+
+          <div>
+ 
+
+
+
+
+        <div class="info">
+            <i class="fa-solid fa-envelope"></i>
+            <span>example@gmail.com</span>
+        </div>
+
+        <div class="info">
+            <i class="fa-solid fa-phone"></i>
+            <span>06********</span>
+        </div>
+
+        <div class="info">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Example Address</span>
+        </div>
+    </div>
+ 
+<div class="comments-sections">
+  <h2>Notes</h2>
+  <hr>
+  <div id="commentsList"></div>
+</div>
+    </form>
+
+
+
+
+
+    <div class="contact-right">
+    <img src="assets/logo-f.png" alt="">
+
+    
+</div>
+
+   </div>
+   
+
+
+   <script>
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let name = document.querySelector('input[name="name"]').value;
+  let message = document.querySelector('textarea[name="message"]').value;
+  let rating = document.querySelector('input[name="rating"]:checked');
+
+  if (!name || !message || !rating) {
+    alert("Please fill in all fields and select a star rating ⭐");
+    return false;
+  }
+
+  // aficher les commentair
+  let stars = "★".repeat(rating.value) + "☆".repeat(5 - rating.value);
+  let commentHTML = `
+    <div class="comment">
+      <h4>${name}</h4>
+      <div class="stars">${stars}</div>
+      <p>${message}</p>
+    </div>
+  `;
+  document.getElementById("commentsList").innerHTML += commentHTML;
+
+  // transferer formulaie vers email
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: new FormData(event.target)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    alert("Your message has been sent successfully ✅");
+    event.target.reset(); 
+  })
+  .catch(err => {
+    console.error(err);
+    alert("An error occurred while sending your message ❌");
+  });
+
+  return false;
+}
+
+</script>
+
+  
+</body>
+</html>
+

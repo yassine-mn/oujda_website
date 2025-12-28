@@ -1,0 +1,155 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: "Outfit", sans-serif;
+  background: linear-gradient(#6c07ca8e, #7b08d9);
+}
+
+
+
+.contact-container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-evenly;
+}
+
+.contact-left{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.contact-left-title h2{
+  font-size:40px;
+  color:#5606ea;
+}
+
+.contact-left-title hr,
+.comments-section hr{
+  width:120px;
+  height:5px;
+  background:#7a05e7af;
+  border:none;
+  border-radius:10px;
+}
+
+.contact-inputs{
+  width:400px;
+  height:50px;
+  padding-left:20px;
+  border:none;
+  border-radius:8px;
+  outline:none;
+}
+
+textarea.contact-inputs{
+  height:140px;
+  padding:15px;
+}
+
+.contact-inputs:focus{
+  border:2px solid #5208f2;
+}
+
+.contact-left button{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:15px 30px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(270deg,#c094028e,#004e1e);
+  color:#6600ff;
+  cursor:pointer;
+}
+
+
+
+.contact-right{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.contact-right img{
+  width:450px;
+}
+
+.info{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  font-size:20px;
+  color:#66098f;
+}
+
+.info i{
+  background:#ffffffb5;
+  color:#7400e8;
+  padding:10px;
+  border-radius:50%;
+}
+
+
+
+.rating{
+  direction:rtl;
+}
+
+.rating input{
+  display:none;
+}
+
+.rating label{
+  font-size:35px;
+  color:#ccc;
+  cursor:pointer;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label{
+  color:gold;
+}
+
+
+
+.comments-section{
+  max-width:600px;
+  margin:40px auto;
+}
+
+.comment{
+  background:#f9f9f9;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.comment h4{
+  color:#333;
+}
+
+.stars{
+  color:gold;
+  font-size:20px;
+}
+
+
+@media(max-width:800px){
+  .contact-right{
+    display:none;
+  }
+
+  .contact-inputs{
+    width:80vw;
+  }
+}
+.comments-sections{
+    max-width: 2000px;
+}
